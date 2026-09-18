@@ -6,7 +6,7 @@ use App\Models\genders;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<genders>
+ * @extends Factory<Genders>
  */
 class GendersFactory extends Factory
 {
@@ -18,7 +18,8 @@ class GendersFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'id' => fake()->unique()->randomElement([1, 2]),
+            'name' => fake()->randomElement(['Male', 'Female']),
         ];
     }
 }

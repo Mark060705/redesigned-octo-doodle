@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\films;
 use App\Models\roles;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +20,10 @@ class RolesFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'id' => fake()->unique()->randomNumber(),
+            'film_id' => films::all()->random()->id,
+            'user_id' => User::all()->random()->id,
+            'name' => fake()->name(),
         ];
     }
 }

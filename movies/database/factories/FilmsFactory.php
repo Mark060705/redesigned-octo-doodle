@@ -3,10 +3,11 @@
 namespace Database\Factories;
 
 use App\Models\films;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends Factory<films>
+ * @extends Factory<Films>
  */
 class FilmsFactory extends Factory
 {
@@ -18,7 +19,11 @@ class FilmsFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'id' => fake()->unique()->randomNumber(),
+            'title' => fake()->sentence(),
+            'user_id' => User::class::all()->random()->id,
+            'release_year' => fake()->year(),
+            'minutes' => fake()->numberBetween(60, 180),
         ];
     }
 }
